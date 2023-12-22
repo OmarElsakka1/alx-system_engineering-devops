@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Printing numbers from 1 to 100 in list format.
+#   Printing "FizzBuzz" if (number % 3 == 0) and (number % 5 == 0).
+#   Printing "Fizz" if (number % 3 == 0).
+#   Printing "Buzz" if (number % 5 == 0).
+#   else then, displays the number.
+
+for number in {1..100}
+do
+  if (( number % 3 == 0 && number % 5 == 0 ))
+  then
+    echo "FizzBuzz"
+  elif (( number % 3 == 0 ))
+  then
+    echo "Fizz"
+  elif (( number % 5 == 0 ))
+  then
+    echo "Buzz"
+  else
+    echo "$number"
+  fi
+done
