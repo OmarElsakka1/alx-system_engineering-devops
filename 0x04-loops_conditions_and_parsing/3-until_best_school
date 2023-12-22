@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Using until loop for printing Ten Times.
+
+j=0
+
+until [ $j -eq 10 ]
+do
+  echo "Best School"
+  (( j++ ))
+done
