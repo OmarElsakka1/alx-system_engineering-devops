@@ -11,21 +11,21 @@ if __name__ == '__main__':
     url = baseUrl + "/" + employeeId
 
     response = requests.get(url)
-    employeeName = response.json().get('name')
+    EMPLOYEE_NAME = response.json().get('name')
 
     todoUrl = url + "/todos"
     response = requests.get(todoUrl)
     tasks = response.json()
-    done = 0
+    NUMBER_OF_DONE_TASKS = 0
     done_tasks = []
 
     for task in tasks:
         if task.get('completed'):
             done_tasks.append(task)
-            done += 1
+            NUMBER_OF_DONE_TASKS += 1
 
     print("Employee {} is done with tasks({}/{}):"
-          .format(employeeName, done, len(tasks)))
+          .format(EMPLOYEE_NAME, NUMBER_OF_DONE_TASKS, len(tasks)))
 
     for task in done_tasks:
         print("\t {}".format(task.get('title')))
