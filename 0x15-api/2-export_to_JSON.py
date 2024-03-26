@@ -15,8 +15,8 @@ if __name__ == '__main__':
     response = requests.get(url)
     username = response.json().get('username')
 
-    todoUrl = url + "/todos"
-    response = requests.get(todoUrl)
+    todo_Url = url + "/todos"
+    response = requests.get(todo_Url)
     tasks = response.json()
 
     dictionary = {employee_Id: []}
