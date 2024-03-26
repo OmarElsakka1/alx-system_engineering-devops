@@ -1,14 +1,15 @@
 #!/usr/bin/python3
-"""Accessing a REST API for todo lists of employees"""
+"""Accesses a REST-API for the ToDo lists of the employees
+and save it in a csv file"""
 
 import requests
 import sys
 
 
 if __name__ == '__main__':
-    employeeId = sys.argv[1]
+    employee_Id = sys.argv[1]
     baseUrl = "https://jsonplaceholder.typicode.com/users"
-    url = baseUrl + "/" + employeeId
+    url = baseUrl + "/" + employee_Id
 
     response = requests.get(url)
     username = response.json().get('username')
@@ -17,8 +18,8 @@ if __name__ == '__main__':
     response = requests.get(todoUrl)
     tasks = response.json()
 
-    with open('{}.csv'.format(employeeId), 'w') as file:
+    with open('{}.csv'.format(employee_Id), 'w') as file:
         for task in tasks:
             file.write('"{}","{}","{}","{}"\n'
-                       .format(employeeId, username, task.get('completed'),
+                       .format(employee_Id, username, task.get('completed'),
                                task.get('title')))
