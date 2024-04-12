@@ -33,9 +33,9 @@ def recurse(subreddit, hot_list=[]):
     global after
     headers = {'User-Agent': 'ledbag123'}
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    parameters = {'after': after}
+    the_parameters = {'after': after}
     response = requests.get(url, headers=headers, allow_redirects=False,
-                            params=parameters)
+                            params=the_parameters)
     if response.status_code == 200:
         prox = response.json().get('data').get('after')
 
