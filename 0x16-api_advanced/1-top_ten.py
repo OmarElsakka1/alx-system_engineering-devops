@@ -26,3 +26,4 @@ if __name__ == '__main__':
     else:
         subreddit = sys.argv[1]
         top_ten(subreddit)
+
