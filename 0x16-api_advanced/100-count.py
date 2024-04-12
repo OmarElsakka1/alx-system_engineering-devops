@@ -4,7 +4,8 @@ import requests
 
 
 def count_words(subreddit, word_list, instances={}, after="", count=0):
-    """Printing the counts of certain words exist in the hot posts of a certain subreddit.
+    """Printing the counts of certain words exist in the \
+        hot posts of a certain subreddit.
     Args:
         subreddit (str): Subreddit to search.
         word_list (list): List of words to search about in post titles.
@@ -52,4 +53,3 @@ def count_words(subreddit, word_list, instances={}, after="", count=0):
         [print("{}: {}".format(k, v)) for k, v in instances]
     else:
         count_words(subreddit, word_list, instances, after, count)
-
