@@ -1,17 +1,18 @@
 #!/usr/bin/python3
 """
-
-Recursively queries the Reddit API and returns a list containing the titles of all hot articles for a given subreddit.
-If the subreddit is invalid or no results are found, it returns None.
+    This module is for getting the titles of all hot \
+        articles for a certain subreddit.
 """
 
 import requests
+
 
 def recurse(subreddit, hot_list=[], after=None):
     if after is None:
         url = f'https://www.reddit.com/r/{subreddit}/hot.json?limit=100'
     else:
-        url = f'https://www.reddit.com/r/{subreddit}/hot.json?limit=100&after={after}'
+        sub_url = f'hot.json?limit=100&after={after}'
+        url = f'https://www.reddit.com/r/{subreddit}/{sub_url}'
     headers = {'User-Agent': 'by u/qasqot79'}
     response = requests.get(url, headers=headers)
 
@@ -29,6 +30,7 @@ def recurse(subreddit, hot_list=[], after=None):
             return hot_list
     else:
         return None
+
 
 if __name__ == '__main__':
     import sys
