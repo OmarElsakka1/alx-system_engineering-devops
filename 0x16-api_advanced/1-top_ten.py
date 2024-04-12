@@ -5,6 +5,7 @@ This module is for getting the first 10 hot posts for a certain subreddit.
 
 import requests
 
+
 def top_ten(subreddit):
     url = f'https://www.reddit.com/r/{subreddit}/hot.json?limit=10'
     headers = {'User-Agent': 'by u/qasqot79'}
@@ -18,6 +19,7 @@ def top_ten(subreddit):
     else:
         print(None)
 
+
 if __name__ == '__main__':
     import sys
 
@@ -26,4 +28,3 @@ if __name__ == '__main__':
     else:
         subreddit = sys.argv[1]
         top_ten(subreddit)
-
