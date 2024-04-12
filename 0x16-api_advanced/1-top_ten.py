@@ -13,7 +13,7 @@ def top_ten(subreddit):
 
     headers = {
             "Accept": "*/*",
-            "User-Agent": "ALX student script",
+            "User-Agent": "Omar El-Sakka",
     }
     api_url = 'https://www.reddit.com/r'
     type_ = 'hot'
