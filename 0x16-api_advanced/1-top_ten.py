@@ -3,28 +3,24 @@
 This module is for getting the first 10 hot posts for a certain subreddit.
 """
 
+import json
 import requests
+import sys
 
 
 def top_ten(subreddit):
-    url = f'https://www.reddit.com/r/{subreddit}/hot.json?limit=10'
-    headers = {'User-Agent': 'by u/qasqot79'}
-    response = requests.get(url, headers=headers)
-
-    if response.status_code == 200:
-        data = response.json()
-        posts = data['data']['children']
-        for post in posts:
-            print(post['data']['title'])
+    """Read reddit API and return top 10 hotspots """
+    username = 'ledbag123'
+    password = 'Reddit72'
+    user_pass_dict = {'user': username, 'passwd': password, 'api_type': 'json'}
+    headers = {'user-agent': '/u/ledbag123 API Python for Holberton School'}
+    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
+    client = requests.session()
+    client.headers = headers
+    r = client.get(url, allow_redirects=False)
+    if r.status_code == 200:
+        list_titles = r.json()['data']['children']
+        for a in list_titles[:10]:
+            print(a['data']['title'])
     else:
-        print(None)
-
-
-if __name__ == '__main__':
-    import sys
-
-    if len(sys.argv) < 2:
-        print("Please pass an argument for the subreddit to search.")
-    else:
-        subreddit = sys.argv[1]
-        top_ten(subreddit)
+        return (print("None"))
