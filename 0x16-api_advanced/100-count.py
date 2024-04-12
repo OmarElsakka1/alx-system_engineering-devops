@@ -5,7 +5,7 @@ after = None
 
 
 def count_words(subreddit, word_list):
-    """Count the titles found with wordlist in subreddit"""
+    """Counting the titles found with wordlist in subreddit"""
     the_list = recurse(subreddit)
     my_dict = {}
 
@@ -28,21 +28,21 @@ def count_words(subreddit, word_list):
 
 
 def recurse(subreddit, hot_list=[]):
-    """ recurse is a function that return hot list from
+    """ returning hot list from
         a subreddit"""
     global after
     headers = {'User-Agent': 'ledbag123'}
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    the_parameters = {'after': after}
-    the_response = requests.get(url, headers=headers, allow_redirects=False,
-                            params=the_parameters)
-    if the_response.status_code == 200:
-        prox = the_response.json().get('data').get('after')
+    parameters = {'after': after}
+    response = requests.get(url, headers=headers, allow_redirects=False,
+                            params=parameters)
+    if response.status_code == 200:
+        prox = response.json().get('data').get('after')
 
         if prox is not None:
             after = prox
             recurse(subreddit, hot_list)
-        list_titles = the_response.json().get('data').get('children')
+        list_titles = response.json().get('data').get('children')
 
         for title_ in list_titles:
             hot_list.append(title_.get('data').get('title'))
